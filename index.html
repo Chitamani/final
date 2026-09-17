@@ -1,0 +1,1272 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>FreshBasket | Fresh Fruits</title>
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Playfair+Display:wght@600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
+
+  <style>
+    :root {
+      --green: #164b35;
+      --orange: #f28c28;
+      --cream: #fffaf1;
+      --light: #f2f8ec;
+      --dark: #18251e;
+      --muted: #68746c;
+      --shadow: 0 18px 50px rgba(22, 75, 53, .12);
+    }
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    html {
+      scroll-behavior: smooth;
+    }
+
+    body {
+      color: var(--dark);
+      background: var(--cream);
+      font-family: "DM Sans", sans-serif;
+      line-height: 1.6;
+    }
+
+    a {
+      color: inherit;
+      text-decoration: none;
+    }
+
+    button,
+    input,
+    textarea,
+    select {
+      font: inherit;
+    }
+
+    .container {
+      width: min(1120px, 92%);
+      margin: auto;
+    }
+
+    header {
+      position: sticky;
+      top: 0;
+      z-index: 10;
+    nav {
+      min-height: 76px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 20px;
+    }
+
+    .logo {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      color: var(--green);
+      font-size: 1.4rem;
+      font-weight: 700;
+    }
+
+    .logo-icon {
+      display: block;
+      width: 42px;
+      height: 42px;
+      border-radius: 50%;
+      object-fit: cover;
+    }
+
+    .nav-links {
+      display: flex;
+      gap: 24px;
+      color: var(--muted);
+      font-weight: 600;
+    }
+
+    .nav-links a:hover {
+      color: var(--orange);
+    }
+
+    .btn {
+      display: inline-flex;
+      justify-content: center;
+      align-items: center;
+      gap: 8px;
+      border: 0;
+      border-radius: 999px;
+      padding: 13px 22px;
+      cursor: pointer;
+      color: white;
+      background: var(--green);
+      font-weight: 700;
+      transition: .25s;
+    }
+
+    .btn:hover {
+      background: var(--orange);
+      transform: translateY(-2px);
+    }
+
+    .btn.orange {
+      background: var(--orange);
+    }
+
+    section {
+      padding: 85px 0;
+    }
+
+    h1,
+    h2 {
+      color: var(--green);
+      font-family: "Playfair Display", serif;
+      line-height: 1.1;
+    }
+
+    h1 {
+      font-size: clamp(2.8rem, 6vw, 5.3rem);
+    }
+
+    h2 {
+      font-size: clamp(2rem, 4vw, 3.3rem);
+    }
+
+    .eyebrow {
+      margin-bottom: 14px;
+      color: var(--orange);
+      font-weight: 700;
+      letter-spacing: 1.5px;
+      text-transform: uppercase;
+    }
+
+    .section-heading {
+      max-width: 650px;
+      margin: 0 auto 42px;
+      text-align: center;
+    }
+
+    .section-heading p {
+      margin-top: 14px;
+      color: var(--muted);
+    }
+
+    .hero {
+      overflow: hidden;
+      padding: 90px 0;
+      background:
+        radial-gradient(circle at 90% 20%, #ffd68d 0 11%, transparent 12%),
+        radial-gradient(circle at 10% 90%, #d7efc9 0 14%, transparent 15%),
+        var(--cream);
+    }
+
+    .hero-grid {
+      display: grid;
+      grid-template-columns: 1.05fr .95fr;
+      align-items: center;
+      gap: 60px;
+    }
+
+    .hero p {
+      max-width: 550px;
+      margin: 22px 0 30px;
+      color: var(--muted);
+      font-size: 1.1rem;
+    }
+
+    .hero-actions {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 14px;
+    }
+
+    .hero-image {
+      min-height: 430px;
+      position: relative;
+      display: grid;
+      place-items: center;
+      border-radius: 45% 55% 45% 55%;
+      background: linear-gradient(145deg, #b9df9d, #f9c263);
+      box-shadow: var(--shadow);
+    }
+
+    .fruit-bowl {
+      width: clamp(220px, 70%, 360px);
+      height: 260px;
+      object-fit: contain;
+      filter: drop-shadow(0 20px 15px #3c4b1940);
+    }
+
+    .floating-card {
+      position: absolute;
+      right: -20px;
+      bottom: 30px;
+      padding: 15px 20px;
+      border-radius: 18px;
+      background: white;
+      box-shadow: var(--shadow);
+      font-weight: 700;
+    }
+
+      background: #fffaf1ee;
+      backdrop-filter: blur(12px);
+      border-bottom: 1px solid #eee5d8;
+    }
+
+    nav {
+      min-height: 76px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 20px;
+    }
+
+    .logo {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      color: var(--green);
+      font-size: 1.4rem;
+      font-weight: 700;
+    }
+
+    .logo-icon {
+      display: block;
+      width: 42px;
+      height: 42px;
+      border-radius: 50%;
+      object-fit: cover;
+    }
+
+    .nav-links {
+      display: flex;
+      gap: 24px;
+      color: var(--muted);
+      font-weight: 600;
+    }
+
+    .nav-links a:hover {
+      color: var(--orange);
+    }
+
+    .btn {
+      display: inline-flex;
+      justify-content: center;
+      align-items: center;
+      gap: 8px;
+      border: 0;
+      border-radius: 999px;
+      padding: 13px 22px;
+      cursor: pointer;
+      color: white;
+      background: var(--green);
+      font-weight: 700;
+      transition: .25s;
+    }
+
+    .btn:hover {
+      background: var(--orange);
+      transform: translateY(-2px);
+    }
+
+    .btn.orange {
+      background: var(--orange);
+    }
+
+    section {
+      padding: 85px 0;
+    }
+
+    h1,
+    h2 {
+      color: var(--green);
+      font-family: "Playfair Display", serif;
+      line-height: 1.1;
+    }
+
+    h1 {
+      font-size: clamp(2.8rem, 6vw, 5.3rem);
+    }
+
+    h2 {
+      font-size: clamp(2rem, 4vw, 3.3rem);
+    }
+
+    .eyebrow {
+      margin-bottom: 14px;
+      color: var(--orange);
+      font-weight: 700;
+      letter-spacing: 1.5px;
+      text-transform: uppercase;
+    }
+
+    .section-heading {
+      max-width: 650px;
+      margin: 0 auto 42px;
+      text-align: center;
+    }
+
+    .section-heading p {
+      margin-top: 14px;
+      color: var(--muted);
+    }
+
+    .hero {
+      overflow: hidden;
+      padding: 90px 0;
+      background:
+        radial-gradient(circle at 90% 20%, #ffd68d 0 11%, transparent 12%),
+        radial-gradient(circle at 10% 90%, #d7efc9 0 14%, transparent 15%),
+        var(--cream);
+    }
+
+    .hero-grid {
+      display: grid;
+      grid-template-columns: 1.05fr .95fr;
+      align-items: center;
+      gap: 60px;
+    }
+
+    .hero p {
+      max-width: 550px;
+      margin: 22px 0 30px;
+      color: var(--muted);
+      font-size: 1.1rem;
+    }
+
+    .hero-actions {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 14px;
+    }
+
+    .hero-image {
+      min-height: 430px;
+      position: relative;
+      display: grid;
+      place-items: center;
+      border-radius: 45% 55% 45% 55%;
+      background: linear-gradient(145deg, #b9df9d, #f9c263);
+      box-shadow: var(--shadow);
+    }
+
+    .fruit-bowl {
+      font-size: clamp(8rem, 18vw, 14rem);
+      filter: drop-shadow(0 20px 15px #3c4b1940);
+    }
+
+    .floating-card {
+      position: absolute;
+      right: -20px;
+      bottom: 30px;
+      padding: 15px 20px;
+      border-radius: 18px;
+      background: white;
+      box-shadow: var(--shadow);
+      font-weight: 700;
+    }
+
+    .benefits,
+    .plans,
+    .products-grid,
+    .reviews {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 22px;
+    }
+
+    .benefit,
+    .plan,
+    .product-card,
+    .review,
+    .contact-box {
+      padding: 26px;
+      border: 1px solid #eee5d8;
+      border-radius: 22px;
+      background: white;
+      box-shadow: 0 8px 25px #0000000a;
+    }
+
+    .benefit-icon {
+      display: grid;
+      place-items: center;
+      width: 52px;
+      height: 52px;
+      margin-bottom: 16px;
+      border-radius: 15px;
+      color: var(--green);
+      background: #e8f5e7;
+      font-size: 1.4rem;
+    }
+
+    .benefit h3,
+    .plan h3,
+    .product-card h3 {
+      margin-bottom: 8px;
+      color: var(--green);
+    }
+
+    .benefit p,
+    .plan p,
+    .review p,
+    .product-card p {
+      color: var(--muted);
+    }
+
+    .plans-section,
+    .products-section {
+      background: var(--light);
+    }
+
+    .plan {
+      position: relative;
+      display: flex;
+      flex-direction: column;
+    }
+
+    .plan.featured {
+      border: 2px solid var(--orange);
+      transform: translateY(-10px);
+    }
+
+    .badge {
+      position: absolute;
+      top: -14px;
+      right: 20px;
+      padding: 5px 13px;
+      border-radius: 20px;
+      color: white;
+      background: var(--orange);
+      font-size: .8rem;
+      font-weight: 700;
+    }
+
+    .plan-price {
+      margin: 18px 0;
+      color: var(--orange);
+      font-size: 2rem;
+      font-weight: 700;
+    }
+
+    .plan ul {
+      flex: 1;
+      list-style: none;
+      margin: 10px 0 25px;
+      color: var(--muted);
+    }
+
+    .plan li {
+      margin: 10px 0;
+    }
+
+    .product-card {
+      text-align: center;
+      transition: .25s;
+    }
+
+    .product-card:hover {
+      transform: translateY(-6px);
+      box-shadow: var(--shadow);
+    }
+
+    .product-image {
+      display: grid;
+      place-items: center;
+      height: 130px;
+      margin-bottom: 18px;
+      border-radius: 18px;
+    }
+
+    .product-image img {
+      width: 80px;
+      height: 80px;
+      font-size: 5rem;
+    }
+
+    .product-card strong {
+      display: block;
+      margin: 12px 0 18px;
+      color: var(--orange);
+      font-size: 1.4rem;
+    }
+
+    .order-area {
+      display: grid;
+      grid-template-columns: .8fr 1.2fr;
+      gap: 45px;
+      align-items: start;
+    }
+
+    .order-info p {
+      margin: 18px 0;
+      color: var(--muted);
+    }
+
+    .order-form {
+      display: grid;
+      gap: 15px;
+      padding: 30px;
+      border-radius: 25px;
+      background: white;
+      box-shadow: var(--shadow);
+    }
+
+    .form-row {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 15px;
+    }
+
+    label {
+      display: grid;
+      gap: 7px;
+      color: var(--green);
+      font-size: .92rem;
+      font-weight: 700;
+    }
+
+    input,
+    textarea,
+    select {
+      width: 100%;
+      padding: 13px;
+      border: 1px solid #dce5da;
+      border-radius: 10px;
+      outline: 0;
+      background: #fbfdf9;
+    }
+
+    textarea {
+      min-height: 100px;
+      resize: vertical;
+    }
+
+    input:focus,
+    textarea:focus,
+    select:focus {
+      border-color: var(--orange);
+    }
+
+    .cart-box {
+      padding: 20px;
+      border-radius: 16px;
+      background: var(--light);
+    }
+
+    .cart-box h3 {
+      margin-bottom: 10px;
+      color: var(--green);
+    }
+
+    .cart-item {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 15px;
+      padding: 12px 0;
+      border-bottom: 1px solid #dce5da;
+    }
+
+    .cart-item-name {
+      flex: 1;
+      color: var(--dark);
+      font-weight: 600;
+    }
+
+    .cart-item-right {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+    }
+
+    .quantity-controls {
+      display: flex;
+      align-items: center;
+      gap: 7px;
+    }
+
+    .quantity-controls button {
+      display: grid;
+      place-items: center;
+      width: 28px;
+      height: 28px;
+      padding: 0;
+      border: 0;
+      border-radius: 6px;
+      cursor: pointer;
+      color: white;
+      background: var(--green);
+      font-size: 1.1rem;
+      font-weight: 700;
+    }
+
+    .quantity-controls button:hover {
+      background: var(--orange);
+    }
+
+    .quantity-number {
+      min-width: 22px;
+      text-align: center;
+      font-weight: 700;
+    }
+
+    .item-price {
+      min-width: 65px;
+      color: var(--green);
+      text-align: right;
+      font-weight: 700;
+    }
+
+    .cart-total {
+      display: flex;
+      justify-content: space-between;
+      margin-top: 14px;
+      color: var(--green);
+      font-size: 1.1rem;
+      font-weight: 700;
+    }
+
+    .stars {
+      margin-bottom: 14px;
+      color: var(--orange);
+    }
+
+    .reviewer {
+      display: block;
+      margin-top: 18px;
+      color: var(--green);
+      font-weight: 700;
+    }
+
+    .contact-section {
+      color: white;
+      background: var(--green);
+    }
+
+    .contact-section h2 {
+      color: white;
+    }
+
+    .contact-section p {
+      color: #d4e5d8;
+    }
+
+    .contact-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 30px;
+      align-items: center;
+    }
+
+    .contact-details {
+      display: grid;
+      gap: 15px;
+      margin-top: 25px;
+    }
+
+    .contact-details a {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+    }
+
+    .contact-details i {
+      width: 22px;
+      color: #ffc062;
+    }
+
+    .socials {
+      display: flex;
+      gap: 12px;
+      margin-top: 25px;
+    }
+
+    .socials a {
+      display: grid;
+      place-items: center;
+      width: 42px;
+      height: 42px;
+      border-radius: 50%;
+      background: #ffffff24;
+    }
+
+    .socials a:hover {
+      background: var(--orange);
+    }
+
+    .contact-box {
+      color: var(--dark);
+    }
+
+    .contact-box h3 {
+      margin-bottom: 18px;
+      color: var(--green);
+      font-size: 1.5rem;
+    }
+
+    .hours-list {
+      display: grid;
+      gap: 12px;
+    }
+
+    .hours-row {
+      display: flex;
+      justify-content: space-between;
+      gap: 20px;
+      padding: 12px 0;
+      border-bottom: 1px solid #dce5da;
+      color: var(--muted);
+    }
+
+    .hours-row:last-child {
+      border-bottom: 0;
+    }
+
+    .hours-row strong {
+      color: var(--green);
+      white-space: nowrap;
+    }
+
+    footer {
+      padding: 22px;
+      color: #b8cdbc;
+      background: #103a29;
+      text-align: center;
+    }
+
+    @media (max-width: 800px) {
+      .nav-links {
+        display: none;
+      }
+
+      .hero-grid,
+      .order-area,
+      .contact-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .benefits,
+      .plans,
+      .products-grid,
+      .reviews {
+        grid-template-columns: 1fr;
+      }
+
+      .hero {
+        padding: 60px 0;
+      }
+
+      .hero-image {
+        min-height: 300px;
+      }
+
+      .plan.featured {
+        transform: none;
+      }
+    }
+
+    @media (max-width: 550px) {
+      .form-row {
+        grid-template-columns: 1fr;
+      }
+
+      .floating-card {
+        right: 5px;
+      }
+
+      .cart-item {
+        align-items: flex-start;
+        flex-direction: column;
+      }
+
+      .cart-item-right {
+        width: 100%;
+        justify-content: space-between;
+      }
+
+      .hours-row {
+        align-items: flex-start;
+        flex-direction: column;
+        gap: 3px;
+      }
+    }
+  </style>
+</head>
+
+<body>
+  <header>
+    <nav class="container">
+      <a href="#" class="logo">
+        <img class="logo-icon" src="logo.png" alt="FreshBasket logo">
+        Chintamani Fruit Salad
+      </a>
+
+      <div class="nav-links">
+        <a href="#products">Products</a>
+        <a href="#plans">Subscriptions</a>
+        <a href="#order">Order</a>
+        <a href="#reviews">Reviews</a>
+        <a href="#contact">Contact</a>
+      </div>
+
+      <a href="#order" class="btn">Order Now</a>
+    </nav>
+  </header>
+
+  <main>
+    <section class="hero">
+      <div class="container hero-grid">
+        <div>
+          <div class="eyebrow">Freshness delivered daily</div>
+          <h1>Nature's best, delivered to your door.</h1>
+          <p>
+            Enjoy hand-picked, farm-fresh fruits delivered exactly when you need them.
+          </p>
+
+          <div class="hero-actions">
+            <a class="btn orange" href="#products">Shop Fruits</a>
+            <a class="btn" href="#plans">View Plans</a>
+          </div>
+        </div>
+
+        <div class="hero-image">
+          <img class="fruit-bowl" src="https://images.unsplash.com/photo-1610832958506-aa56368176cf?auto=format&fit=crop&w=600&h=500&q=85" alt="Fresh fruit assortment">
+          <div class="floating-card">100% Fresh & Natural</div>
+        </div>
+      </div>
+    </section>
+
+    <section>
+      <div class="container">
+        <div class="section-heading">
+          <div class="eyebrow">Why FreshBasket?</div>
+          <h2>Good fruit. Good mood.</h2>
+        </div>
+
+        <div class="benefits">
+          <article class="benefit">
+            <div class="benefit-icon"><i class="fa-solid fa-leaf"></i></div>
+            <h3>Farm Fresh</h3>
+            <p>Fresh fruits from trusted local farmers.</p>
+          </article>
+
+          <article class="benefit">
+            <div class="benefit-icon"><i class="fa-solid fa-truck-fast"></i></div>
+            <h3>Fast Delivery</h3>
+            <p>Quick and safe doorstep delivery.</p>
+          </article>
+
+          <article class="benefit">
+            <div class="benefit-icon"><i class="fa-solid fa-heart"></i></div>
+            <h3>Made With Care</h3>
+            <p>Every box is packed with care.</p>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section id="products" class="products-section">
+      <div class="container">
+        <div class="section-heading">
+          <div class="eyebrow">Fresh products</div>
+          <h2>Choose your favourite fruits</h2>
+          <p>Add products to your cart and send your order on WhatsApp.</p>
+        </div>
+
+        <div class="products-grid">
+          <article class="product-card">
+            <div class="product-image">
+              <img src="a.png" alt="Fresh red apples">
+            </div>
+            <h3>Fresh Fruits</h3>
+            <p>250 gm Special Fruit </p>
+            <strong>₹60</strong>
+            <button class="btn add-cart" data-name="250 gm Special Fruit" data-price="60">Add to Cart</button>
+          </article>
+          <article class="product-card">
+            <div class="product-image">
+              <img src="b.png" alt="Organic bananas">
+            </div>
+            <h3>Organic Fruits</h3>
+            <p>250 gm Fruit Chocolate Syrup </p>
+            <strong>₹65</strong>
+            <button class="btn add-cart" data-name="250 gm Fruit Chocolate Syrup" data-price="65">Add to Cart</button>
+          </article>
+          <article class="product-card">
+            <div class="product-image">
+              <img src="c.png">
+            </div>
+            <h3>Fresh Fruits</h3>
+            <p>250 gm Fruit Honey </p>
+            <strong>₹65</strong>
+            <button class="btn add-cart" data-name="250 gm Fruit Honey" data-price="65">Add to Cart</button>
+          </article>
+          <article class="product-card">
+            <div class="product-image">
+              <img src="d.png" alt="Green grapes">
+            </div>
+            <h3>Organic Fruits</h3>
+            <p>250 gm Fruit Chat Masala</p>
+            <strong>₹62</strong>
+            <button class="btn add-cart" data-name="250 gm Fruit Chat Masala" data-price="62">Add to Cart</button>
+          </article>
+          <article class="product-card">
+            <div class="product-image">
+              <img src="f.png" alt="Juicy mangoes">
+            </div>
+            <h3>Fresh Fruits</h3>
+            <p>320 gm Chocolate Syrup</p>
+            <strong>₹75</strong>
+            <button class="btn add-cart" data-name="320 gm Chocolate Syrup" data-price="75">Add to Cart</button>
+          </article>
+          <article class="product-card">
+            <div class="product-image">
+              <img src="g.png" alt="Fresh watermelon">
+            </div>
+            <h3>Organic Fruits</h3>
+            <p>320 gm Special Fruit </p>
+            <strong>₹70</strong>
+            <button class="btn add-cart" data-name="320 gm Special Fruit" data-price="70">Add to Cart</button>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section id="plans" class="plans-section">
+      <div class="container">
+        <div class="section-heading">
+          <div class="eyebrow">Flexible subscriptions</div>
+          <h2>Choose your fresh routine</h2>
+        </div>
+
+        <div class="plans">
+          <article class="plan">
+            <h3>Weekly Box</h3>
+            <p>Fresh fruits delivered every week.</p>
+            <div class="plan-price">Weekly</div>
+            <ul>
+              <li>✓ Seasonal fruits</li>
+              <li>✓ Doorstep delivery</li>
+            </ul>
+            <a class="btn" href="#order" data-plan="Weekly">Choose Weekly</a>
+          </article>
+
+          <article class="plan featured">
+            <span class="badge">Most Popular</span>
+            <h3>Monthly Box</h3>
+            <p>A complete monthly supply.</p>
+            <div class="plan-price">Monthly</div>
+            <ul>
+              <li>✓ Premium selection</li>
+              <li>✓ Priority delivery</li>
+            </ul>
+            <a class="btn orange" href="#order" data-plan="Monthly">Choose Monthly</a>
+          </article>
+
+          <article class="plan">
+            <h3>Custom Box</h3>
+            <p>Create your own fruit box.</p>
+            <div class="plan-price">Custom</div>
+            <ul>
+              <li>✓ Choose your fruits</li>
+              <li>✓ Flexible quantity</li>
+            </ul>
+            <a class="btn" href="#order" data-plan="Customized">Customize Box</a>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section id="order">
+      <div class="container order-area">
+        <div class="order-info">
+          <div class="eyebrow">Place your order</div>
+          <h2>Fresh fruit is only a message away.</h2>
+          <p>
+            Complete your details and send your complete cart order directly to WhatsApp.
+          </p>
+        </div>
+
+        <form class="order-form" id="orderForm">
+          <div class="form-row">
+            <label>
+              Full Name
+              <input id="name" type="text" placeholder="Your name" required>
+            </label>
+
+            <label>
+              Mobile Number
+              <input id="phone" type="tel" placeholder="Your mobile number" required>
+            </label>
+          </div>
+
+          <label>
+            Delivery Location
+            <input id="location" type="text" placeholder="Complete delivery address" required>
+          </label>
+
+          <label>
+            Subscription Plan
+            <select id="plan" required>
+              <option value="">Select a plan</option>
+              <option>Weekly</option>
+              <option>Monthly</option>
+              <option>Customized</option>
+              <option>One-time order</option>
+            </select>
+          </label>
+
+          <label>
+            Additional Message
+            <textarea id="message" placeholder="Special instructions"></textarea>
+          </label>
+
+          <div class="cart-box">
+            <h3>Your Cart</h3>
+            <div id="cartItems">Your cart is empty.</div>
+
+            <div class="cart-total">
+              <span>Total</span>
+              <span id="cartTotal">₹0</span>
+            </div>
+          </div>
+
+          <button class="btn orange" type="submit">
+            <i class="fa-brands fa-whatsapp"></i>
+            Send Order on WhatsApp
+          </button>
+        </form>
+      </div>
+    </section>
+
+    <section id="reviews">
+      <div class="container">
+        <div class="section-heading">
+          <div class="eyebrow">Customer love</div>
+          <h2>Happy customer reviews</h2>
+        </div>
+
+        <div class="reviews">
+          <article class="review">
+            <div class="stars">★★★★★</div>
+            <p>“The fruits always arrive fresh and beautifully packed.”</p>
+            <span class="reviewer">— Abhishek Chauhan </span>
+          </article>
+
+          <article class="review">
+            <div class="stars">★★★★★</div>
+            <p>“Excellent service and very quick delivery.”</p>
+            <span class="reviewer">— Ali Raza</span>
+          </article>
+
+          <article class="review">
+            <div class="stars">★★★★★</div>
+            <p>“Best fruit salad ever eat in pune.suggest everyone to try it .”</p>
+            <span class="reviewer">— Rahul Sharma </span>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section id="contact" class="contact-section">
+      <div class="container contact-grid">
+        <div>
+          <div class="eyebrow">Get in touch</div>
+          <h2>Have a question?</h2>
+          <p>Contact us anytime. We are happy to help.</p>
+
+          <div class="contact-details">
+            <a href="tel:++919226795690">
+              <i class="fa-solid fa-phone"></i>
+              +91 9226795690
+            </a>
+
+            <a href="https://wa.me/+919226795690" target="_blank">
+              <i class="fa-brands fa-whatsapp"></i>
+              WhatsApp Us
+            </a>
+
+            <a href="mailto:potalwardevidas@gmail.com">
+              <i class="fa-solid fa-envelope"></i>
+             potalwardevidas@gmail.com
+            </a>
+          </div>
+
+          <div class="socials">
+            <a href="https://instagram.com/" target="_blank" aria-label="Instagram">
+              <i class="fa-brands fa-instagram"></i>
+            </a>
+
+            <a href="https://facebook.com/" target="_blank" aria-label="Facebook">
+              <i class="fa-brands fa-facebook-f"></i>
+            </a>
+
+            <a href="https://wa.me/919226795690" target="_blank" aria-label="WhatsApp">
+              <i class="fa-brands fa-whatsapp"></i>
+            </a>
+          </div>
+        </div>
+
+        <div class="contact-box">
+          <h3>Opening Hours</h3>
+
+          <div class="hours-list">
+            <div class="hours-row">
+              <span>Monday – Saturday</span>
+              <strong>Morning 6:00 AM – 9:00 AM<br>Evening 5:00 PM – 9:00 PM</strong>
+            </div>
+
+            <div class="hours-row">
+              <span>Sunday</span>
+              <strong>7:00 AM – 7:00 PM</strong>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer>
+ FSSAI Licence:  21526038006111
+    
+  </footer>
+
+  <script>
+    const ownerWhatsApp = "918949106245";
+    let cart = [];
+
+    const cartItems = document.getElementById("cartItems");
+    const cartTotal = document.getElementById("cartTotal");
+
+    function renderCart() {
+      if (cart.length === 0) {
+        cartItems.textContent = "Your cart is empty.";
+        cartTotal.textContent = "₹0";
+        return;
+      }
+
+      cartItems.innerHTML = cart.map((item, index) => `
+        <div class="cart-item">
+          <span class="cart-item-name">${item.name}</span>
+
+          <div class="cart-item-right">
+            <div class="quantity-controls">
+              <button type="button" onclick="decreaseQuantity(${index})">−</button>
+              <span class="quantity-number">${item.quantity}</span>
+              <button type="button" onclick="increaseQuantity(${index})">+</button>
+            </div>
+
+            <span class="item-price">
+              ₹${item.price * item.quantity}
+            </span>
+          </div>
+        </div>
+      `).join("");
+
+      const total = cart.reduce(
+        (sum, item) => sum + item.price * item.quantity,
+        0
+      );
+
+      cartTotal.textContent = "₹" + total;
+    }
+
+    function increaseQuantity(index) {
+      cart[index].quantity++;
+      renderCart();
+    }
+
+    function decreaseQuantity(index) {
+      cart[index].quantity--;
+
+      if (cart[index].quantity <= 0) {
+        cart.splice(index, 1);
+      }
+
+      renderCart();
+    }
+
+    document.querySelectorAll(".add-cart").forEach(button => {
+      button.addEventListener("click", () => {
+        const name = button.dataset.name;
+        const price = Number(button.dataset.price);
+        const existingItem = cart.find(item => item.name === name);
+
+        if (existingItem) {
+          existingItem.quantity++;
+        } else {
+          cart.push({
+            name,
+            price,
+            quantity: 1
+          });
+        }
+
+        renderCart();
+
+        document.getElementById("order").scrollIntoView({
+          behavior: "smooth"
+        });
+      });
+    });
+
+    document.querySelectorAll("[data-plan]").forEach(button => {
+      button.addEventListener("click", () => {
+        document.getElementById("plan").value = button.dataset.plan;
+      });
+    });
+
+    document.getElementById("orderForm").addEventListener("submit", event => {
+      event.preventDefault();
+
+      const name = document.getElementById("name").value.trim();
+      const phone = document.getElementById("phone").value.trim();
+      const location = document.getElementById("location").value.trim();
+      const plan = document.getElementById("plan").value;
+      const message = document.getElementById("message").value.trim();
+
+      const products = cart.length
+        ? cart.map(item =>
+            `${item.name} x ${item.quantity} = ₹${item.price * item.quantity}`
+          ).join("\n")
+        : "No products selected";
+
+      const total = cart.reduce(
+        (sum, item) => sum + item.price * item.quantity,
+        0
+      );
+
+      const whatsappMessage =
+`Hello Chintamani!
+
+*New Fruit Order*
+
+Name: ${name}
+Mobile: ${phone}
+Location: ${location}
+Plan: ${plan}
+
+Products:
+${products}
+
+Total: ₹${total}
+
+Message:
+${message || "No additional message"}`;
+
+      window.open(
+        `https://wa.me/${ownerWhatsApp}?text=${encodeURIComponent(whatsappMessage)}`,
+        "_blank"
+      );
+    });
+
+    renderCart();
+  </script>
+</body>
+</html>
